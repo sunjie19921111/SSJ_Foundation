@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITextView (SSJAdd)
 
-@property (nonatomic, strong) NSString* placeholder;
-@property (nonatomic, strong) UILabel * placeholderLabel;
-@property (nonatomic, strong) UIColor * placeholderLabelColor;
-@property (nonatomic, strong) NSString* textValue;
+@property (nonatomic, strong) NSString *placeholder;
+@property (nonatomic, strong) UILabel  *placeholderLabel;
+@property (nonatomic, strong) UIColor  *placeholderLabelColor;
+@property (nonatomic, strong) NSString *textValue;
 
 @end
 

@@ -14,7 +14,7 @@ typedef void (^AlertBlock)(NSInteger);
 
 @interface UIAlertView (SSJAdd)
 
-- (void)ssj_showAlertWithCompletionHandler: (__nullable AlertBlock)block;
+- (void)ssj_howAlertWithCompletionHandler: (void (^)(NSInteger))block;
 - (void)ssj_clearActionBlock;
 
 @end

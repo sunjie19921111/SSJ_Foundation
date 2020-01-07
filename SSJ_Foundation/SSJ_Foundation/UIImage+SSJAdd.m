@@ -43,21 +43,21 @@
 
 @end
 
-static inline CGRect SJJCGRectFitWithScaleMode(CGRect rect, CGSize size, SDImageScaleMode scaleMode) {
+static inline CGRect SJJCGRectFitWithScaleMode(CGRect rect, CGSize size, SSJImageScaleMode scaleMode) {
     rect = CGRectStandardize(rect);
     size.width = size.width < 0 ? -size.width : size.width;
     size.height = size.height < 0 ? -size.height : size.height;
     CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
     switch (scaleMode) {
-        case SDImageScaleModeAspectFit:
-        case SDImageScaleModeAspectFill: {
+        case SSJImageScaleModeAspectFit:
+        case SSJImageScaleModeAspectFill: {
             if (rect.size.width < 0.01 || rect.size.height < 0.01 ||
                 size.width < 0.01 || size.height < 0.01) {
                 rect.origin = center;
                 rect.size = CGSizeZero;
             } else {
                 CGFloat scale;
-                if (scaleMode == SDImageScaleModeAspectFit) {
+                if (scaleMode == SSJImageScaleModeAspectFit) {
                     if (size.width / size.height < rect.size.width / rect.size.height) {
                         scale = rect.size.height / size.height;
                     } else {
@@ -76,7 +76,7 @@ static inline CGRect SJJCGRectFitWithScaleMode(CGRect rect, CGSize size, SDImage
                 rect.origin = CGPointMake(center.x - size.width * 0.5, center.y - size.height * 0.5);
             }
         } break;
-        case SDImageScaleModeFill:
+        case SSJImageScaleModeFill:
         default: {
             rect = rect;
         }
@@ -106,7 +106,7 @@ static inline CGRect SJJCGRectFitWithScaleMode(CGRect rect, CGSize size, SDImage
     return image;
 }
 
-- (void)ssj_drawInRect:(CGRect)rect withScaleMode:(SDImageScaleMode)scaleMode clipsToBounds:(BOOL)clips {
+- (void)ssj_drawInRect:(CGRect)rect withScaleMode:(SSJImageScaleMode)scaleMode clipsToBounds:(BOOL)clips {
     CGRect drawRect = SJJCGRectFitWithScaleMode(rect, self.size, scaleMode);
     if (drawRect.size.width == 0 || drawRect.size.height == 0) return;
     if (clips) {
@@ -139,7 +139,7 @@ static inline CGRect SJJCGRectFitWithScaleMode(CGRect rect, CGSize size, SDImage
     return image;
 }
 
-- (nullable UIImage *)ssj_roundedCornerImageWithRadius:(CGFloat)cornerRadius corners:(SDRectCorner)corners borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor {
+- (nullable UIImage *)ssj_roundedCornerImageWithRadius:(CGFloat)cornerRadius corners:(SSJRectCorner)corners borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor {
     if (!self.CGImage) return nil;
    
     UIGraphicsBeginImageContextWithOptions(self.size, NO, self.scale);

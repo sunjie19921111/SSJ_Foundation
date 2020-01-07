@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIButton (SSJAdd)
 
-@property (nonatomic, assign) NSTimeInterval he_timeInterval;
+@property (nonatomic, assign) NSTimeInterval sjj_timeInterval;
 
 @end
 

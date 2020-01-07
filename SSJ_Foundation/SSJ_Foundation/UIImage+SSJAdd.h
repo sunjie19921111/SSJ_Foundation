@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, SDImageScaleMode) {
-    SDImageScaleModeFill = 0,
-    SDImageScaleModeAspectFit = 1,
-    SDImageScaleModeAspectFill = 2
+typedef NS_ENUM(NSUInteger, SSJImageScaleMode) {
+    SSJImageScaleModeFill = 0,
+    SSJImageScaleModeAspectFit = 1,
+    SSJImageScaleModeAspectFill = 2
 };
 
-typedef UIRectCorner SDRectCorner;
+typedef UIRectCorner SSJRectCorner;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *)ssj_imageWithColor:(UIColor *)color;
 
-- (nullable UIImage *)ssj_roundedCornerImageWithRadius:(CGFloat)cornerRadius corners:(SDRectCorner)corners borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
+- (nullable UIImage *)ssj_roundedCornerImageWithRadius:(CGFloat)cornerRadius corners:(SSJRectCorner)corners borderWidth:(CGFloat)borderWidth borderColor:(nullable UIColor *)borderColor;
 
 @end
 

@@ -9,11 +9,12 @@
 #import "UIButton+SSJAdd.h"
 #import <objc/runtime.h>
 
-#define DEFAULT_INTERVAL 0.1  //默认时间间隔
+#define DEFAULT_INTERVAL 0.1  //Default time interval
 
 @interface UIButton ()
+
 /**
- 是否忽视重复点击, YES - 忽视重复点击 NO - 不忽视重复点击
+ Ignore repeat clicks, YES - ignore repeat clicks, NO - do not ignore repeat clicks
  */
 @property (nonatomic, assign) BOOL isIgnoreEvent;
 
@@ -39,10 +40,10 @@
 
 - (void)heSendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {
     if ([NSStringFromClass(self.class) isEqualToString:@"UIButton"]) {
-        self.he_timeInterval = self.he_timeInterval == 0 ? DEFAULT_INTERVAL : self.he_timeInterval;
+        self.sjj_timeInterval = self.sjj_timeInterval == 0 ? DEFAULT_INTERVAL : self.sjj_timeInterval;
         if (self.isIgnoreEvent) return;
-        if (self.he_timeInterval > 0) {
-            [self performSelector:@selector(changeIgnoreState) withObject:self afterDelay:self.he_timeInterval];
+        if (self.sjj_timeInterval > 0) {
+            [self performSelector:@selector(changeIgnoreState) withObject:self afterDelay:self.sjj_timeInterval];
         }
         
     }
@@ -54,11 +55,11 @@
     [self setIsIgnoreEvent:NO];
 }
 
-- (void)setHe_timeInterval:(NSTimeInterval)he_timeInterval {
-    objc_setAssociatedObject(self, @selector(he_timeInterval), @(he_timeInterval), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setSjj_timeInterval:(NSTimeInterval)sjj_timeInterval {
+    objc_setAssociatedObject(self, @selector(sjj_timeInterval), @(sjj_timeInterval), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSTimeInterval)he_timeInterval {
+- (NSTimeInterval)sjj_timeInterval {
     return [objc_getAssociatedObject(self, _cmd) doubleValue];
 }
 

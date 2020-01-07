@@ -11,7 +11,8 @@
 
 @implementation UITextView (SSJAdd)
 
-#define UI_PLACEHOLDER_TEXT_COLOR [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1.0]
+#define UI_Placeholder_Text_Color [UIColor colorWithRed:170.0/255.0 green:170.0/255.0 blue:170.0/255.0 alpha:1.0]
+
 NSString const *kKeyPlaceHolder = @"kKeyPlaceHolder";
 NSString const *kKeyPlaceHolderColor = @"kKeyPlaceHolderColor";
 NSString const *kKeyLabel = @"kKeyLabel";
@@ -41,14 +42,16 @@ NSString const *kKeyLabel = @"kKeyLabel";
 - (void)addPlaceholderLabelView {
     
     if (self.placeholderLabel) {
+        [self.placeholderLabel sizeToFit];
         return;
     }
     self.placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 0, 0)];
     self.placeholderLabel.numberOfLines = 1;
     
-    self.placeholderLabel.textColor = UI_PLACEHOLDER_TEXT_COLOR;
+    self.placeholderLabel.textColor = UI_Placeholder_Text_Color;
     self.placeholderLabel.backgroundColor = [UIColor clearColor];
     self.placeholderLabel.userInteractionEnabled = true;
+    
     self.placeholderLabel.font = self.font;
     [self addSubview:self.placeholderLabel];
     [self.placeholderLabel sizeToFit];
@@ -64,6 +67,7 @@ NSString const *kKeyLabel = @"kKeyLabel";
 
     [self addPlaceholderLabelView];
     self.placeholderLabel.text = _placeholder;
+    [self.placeholderLabel sizeToFit];
     
     [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(keyPressed:) name:UITextViewTextDidChangeNotification object:nil];
@@ -80,7 +84,7 @@ NSString const *kKeyLabel = @"kKeyLabel";
     return objc_getAssociatedObject(self, &kKeyPlaceHolderColor);
 }
 
-- (NSString*)placeholder {
+- (NSString *)placeholder {
     return objc_getAssociatedObject(self, &kKeyPlaceHolder);
 }
 
